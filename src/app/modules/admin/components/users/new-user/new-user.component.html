@@ -1,0 +1,115 @@
+<h2 mat-dialog-title> {{ estadoFormulario }} Usuario </h2>
+<mat-dialog-content>
+
+  <mat-stepper [linear]="isLinear" #stepper>
+
+    <!-- First user form -->
+    <mat-step [stepControl]="firstUserForm">
+      <form [formGroup]="firstUserForm">
+        <ng-template matStepLabel>Cuenta</ng-template>
+        <div class="user-container">
+
+          <!-- Type of user -->
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo de Usuario</mat-label>
+            <mat-select formControlName='type' required>
+              <mat-option value="US"> Cliente </mat-option>
+              <mat-option value="AD"> Admin </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- E-mail -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="E-mail" formControlName="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required>
+          </mat-form-field>
+
+          <!-- NickName-->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Apodo" formControlName="nickName" required>
+          </mat-form-field>
+
+          <!-- Password -->
+          <mat-form-field appearance="fill">
+            <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+          </mat-form-field>
+
+          <!-- Verify password -->
+          <mat-form-field appearance="fill">
+            <input matInput type="password" placeholder="Contraseña">
+          </mat-form-field>
+
+        </div>
+        <!-- Button -->
+        <div>
+          <button mat-button matStepperNext [disabled]="firstUserForm.invalid">Next</button>
+        </div>
+
+      </form>
+    </mat-step>
+
+    <!-- second user form Step  -->
+    <mat-step [stepControl]="secondUserForm">
+      <form [formGroup]="secondUserForm" >
+        <ng-template matStepLabel>Datos Personales</ng-template>
+        <div class="user-container">
+
+          <!-- Name -->
+          <mat-form-field appearance="fill">
+              <input matInput placeholder="Nombre" formControlName="names" required/>
+          </mat-form-field>
+
+          <!-- Surnames -->
+          <mat-form-field appearance="fill">
+              <input matInput placeholder="Apellidos" formControlName="surNames" required>
+          </mat-form-field>
+
+          <!-- Document Type -->
+          <mat-form-field appearance="fill">
+            <mat-label>Tipo de Documento</mat-label>
+            <mat-select formControlName="documentType" required>
+              <mat-option value="CC">Cedula de Ciudadania</mat-option>
+              <mat-option value="CE">Cedula de Extranjeria</mat-option>
+              <mat-option value="PEP">Permiso especial de Permanencia</mat-option>
+              <mat-option value="PAP">Pasaporte</mat-option>
+              <mat-option value="NIT">NIT (Número de Identificación Tributaria)</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <!-- Document Number -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="N° de Documento" formControlName="documentNumber" pattern="[0-9]"required>
+          </mat-form-field>
+
+          <!-- Address -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Direccion" formControlName="address" required>
+          </mat-form-field>
+
+          <!-- Phone -->
+          <mat-form-field appearance="fill">
+            <input matInput placeholder="Telefono" formControlName="phone" required>
+          </mat-form-field>
+
+        </div>
+        <!-- Button: Next -->
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+        </div>
+
+      </form>
+    </mat-step>
+  </mat-stepper>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button mat-button color="primary" [disabled]="firstUserForm.invalid || secondUserForm.invalid" (click)="onSave()">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+
+    <button mat-button color="primary" (click)="onCancel()">
+        <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,33 @@
+<h2 mat-dialog-title> Deposito </h2>
+
+<mat-dialog-content>
+  <form [formGroup]="depositForm">
+
+    <div class="depo-container">
+      <mat-form-field appearance="fill">
+        <input matInput type="number" placeholder="Valor a depositar" formControlName="deposit" required>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button mat-button color="primary" (click)="onSave()">
+      <mat-icon>save</mat-icon> Guardar
+  </button>
+
+  <button mat-button color="primary" (click)="onCancel()">
+      <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+
+</mat-dialog-actions>
+
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>

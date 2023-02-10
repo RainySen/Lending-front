@@ -1,0 +1,8 @@
+.credit-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-container > * {
+  width: 100%;
+}

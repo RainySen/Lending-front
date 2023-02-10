@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Establecer Credito</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="creditForm">
+
+    <div class="credit-container">
+      <mat-form-field appearance="fill">
+        <input matInput type="number" placeholder="Valor a desembolsar" formControlName="valueDisbursed" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Porcentaje de intereses" formControlName="interestValuation" pattern="[0-9]{1,2}">
+        <span matPrefix>% &nbsp;</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="paymentDeadline" required>
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button mat-button color="primary" (click)="onSave()">
+      <mat-icon>save</mat-icon> Guardar
+  </button>
+
+  <button mat-button color="primary" (click)="onCancel()">
+      <mat-icon>cancel</mat-icon> Cancelar
+  </button>
+
+</mat-dialog-actions>
+
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+</style>
